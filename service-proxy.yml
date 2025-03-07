@@ -1,0 +1,25 @@
+server:
+  port: 8079
+
+# Configuration d'Eureka
+eureka:
+  client:
+    service-url:
+      defaultZone: http://service-registry:8761/eureka
+    fetch-registry: true
+
+# Découverte des services dans Eureka
+spring:
+  cloud:
+    gateway:
+      locator:
+        enabled: true
+      globalcors:
+        corsConfigurations:
+          "[/**]":
+            allowedOrigins: "http://localhost:3000"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
